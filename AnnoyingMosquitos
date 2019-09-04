@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class AnnoyingMosquitos {
+    Scanner scanner = new Scanner(System.in);
+    int test = scanner.nextInt();
+    int n = 0;
+    int m = 0;
+    int output = 0;
+
+    int testCase() {
+        output = 0;
+        n = scanner.nextInt();
+        int[] mosquitoX = new int[n];
+        int[] mosquitoY = new int[n];
+        for (int i = 0; i <  n; i++) {
+            mosquitoX[i] = scanner.nextInt();
+            mosquitoY[i] = scanner.nextInt();
+        }
+        m = scanner.nextInt();
+        int[] attemptX = new int[m];
+        int[] attemptY = new int[m];
+        for (int i = 0; i < m; i++) {
+            attemptX[i] = scanner.nextInt();
+            attemptY[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < mosquitoX.length; i++) {
+            for (int j = 0; j < attemptX.length; j++) {
+                if (Math.abs(mosquitoX[i] - attemptX[j]) <= 50) {
+                    if (Math.abs(mosquitoY[i] - attemptY[j]) <= 50) {
+                        output++;
+                        break;
+                    }
+                }
+            }
+        }
+        return(output);
+    }
+
+    void hits() {
+        for (int i = 0; i < test; i++) {
+            System.out.println(testCase());
+        }
+    }
+
+    public static void main(String[] a) {
+        AnnoyingMosquitos hit = new AnnoyingMosquitos();
+        hit.hits();
+    }
+}
